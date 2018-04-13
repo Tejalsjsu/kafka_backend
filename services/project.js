@@ -31,6 +31,6 @@ exports.handle_request = (data, callback)  => {
     }
     catch (error) {
             console.log(error);
-            callback(error, response);
+            callback(error, res);
         }
 };
