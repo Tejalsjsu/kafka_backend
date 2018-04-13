@@ -17,7 +17,10 @@ exports.handle_request = (data, callback)  => {
                 console.log("Connection established");
             }
             let dbo = db.db("freelancer");
-            dbo.collection("projects").find({}).toArray(function(err,result){
+            dbo.collection("projects").find(
+                    { 'employerId':ObjectId(data.userId)}
+                )
+                .toArray(function(err,result){
                 if(err){
                     console.log("Error in getting result");
                     res.status = 401;
