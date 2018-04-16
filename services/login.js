@@ -1,7 +1,12 @@
+let passport = require('passport')
+    , LocalStrategy = require('passport-local').Strategy;
+const bcrypt = require('bcrypt')
+let salt = bcrypt.genSaltSync(10);
+
 
 function handle_request(msg, callback){
 
-    var res = {};
+    let res = {};
     console.log("In handle request:"+ JSON.stringify(msg));
 
     if(msg.username == "bhavan@b.com" && msg.password =="a"){
