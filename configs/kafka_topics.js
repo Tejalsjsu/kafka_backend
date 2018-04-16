@@ -3,5 +3,5 @@ exports.kafka_topic_enums = {
     FETCH: 'fetch',
     USER:'user_topic',
     DETAILS: 'project_details',
-    TRANSACTION: 'transactions'
+    LOGIN: 'login'
 };
