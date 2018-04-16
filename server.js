@@ -5,7 +5,6 @@ let fetch = require('./services/fetch');
 let user = require('./services/user');
 let hireFreelancer = require('./services/hireFreelancer');
 let projectDetails = require('./services/projectDetails')
-
 let kafka_topic = require('./configs/kafka_topics').kafka_topic_enums;
 
 // let MoneyConsumer = connection.getConsumer(kafka_topic.USER);
@@ -46,7 +45,7 @@ try{
 
             case 'project':
                 project.handle_request(data.data, function (err, res) {
-                    console.log('After Hire Response: ' + res);
+                    console.log('After Fetch all Projects: ' + res);
                     callProducer(data, res);
                 });
                 break;
