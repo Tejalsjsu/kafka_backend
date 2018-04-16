@@ -1,6 +1,7 @@
 let mongodb = new require('mongodb');
 let MongoClient = mongodb.MongoClient;
-let url = "mongodb://localhost:27017/";
+//let url = "mongodb://localhost:27017/";
+let url = "mongodb://<freelancer>:<freelancerpwd>@ds155160.mlab.com:55160/freelancer"
 
 exports.handle_request = (data, callback)  => {
     var res = {};

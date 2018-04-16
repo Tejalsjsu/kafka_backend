@@ -42,6 +42,53 @@ exports.handle_request = (data, callback)  => {
                             }
                         });
                     }
+                    break;
+
+                case "EditProfile":{
+                    dbo.collection("login").updateOne(
+                        {_id: ObjectId(data.userId)},
+                        {
+                            $set: {
+                                professionalHeading: data.professionalHeading,
+                                aboutUser: data.reqDescription,
+                                skills: data.reqSkills,
+                                Phone: data.reqPhone,
+                                lastUpdated: data.reqlastUpdated
+                            }
+                        },
+                        function(err, resultDB){
+                            if (!err) {
+                                console.log("No error" +resultDB);
+                                res.message =  "Profile Updated";
+                                res.status = 201;
+                            } else {
+                                console.log("Error in Profile Update" +err);
+                                res.status = 401;
+                                res.message =  "Profile could not be updated";
+                            }
+                        });
+                }
+
+                    break;
+
+                case "signup": {
+
+                    let userData = { username: data.reqUsername, password: data.hash, email: data.reqEmail};
+                    dbo.collection("login").insertOne(userData,
+                        function(err, resultDB){
+                            if (!err) {
+                                console.log("No error" +resultDB);
+                                res.message =  "Money added successful";
+                                res.status = 201;
+                            } else {
+                                console.log("Error in adding Money" +err);
+                                res.status = 401;
+                                res.message =  "Project could not be posted";
+                            }
+                        });
+                }
+                break;
+
             }
 
         });
